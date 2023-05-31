@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'indexpage.html' %}
+{% block contents %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Enter Category details</h6>
+    <form method="post" action="{% url 'savecategory' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+                            <input class="form-control mb-3" type="text" placeholder="Enter category name" aria-label=".form-control-lg example" name="category">
+                            <input class="form-control mb-3" type="text" placeholder="Discription" aria-label="default input example" name="description">
+                            <input class="form-control form-control-sm bg-dark" id="formFileSm" type="file" name="image"><br>
+                            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+                        </div>
+
+</body>
+</html>
+{% endblock %}

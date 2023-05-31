@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends 'indexpage.html' %}
+{% block contents %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+                    <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Enter Product details</h6>
+    <form method="post" action="{% url 'updateproduct' dataid=data.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+       <select class="form-select mb-3" aria-label="Default select example" name="category">
+                                <option selected="">Choose Category</option>
+                                {% for d in da %}
+                                <option>{{d.Name}}</option>
+                                {% endfor %}
+                            </select>
+
+                            <input class="form-control mb-3" type="text" placeholder="Enter product name" aria-label=".form-control-lg example" name="product" value="{{data.Productname}}">
+                            <input class="form-control mb-3" type="text" placeholder="Discription" aria-label="default input example" name="description" value="{{data.Description}}">
+                            <input class="form-control mb-3" type="number" placeholder="Quantity" aria-label="default input example" name="qty" min="1" max="5" value="{{data.Quantity}}">
+                            <input class="form-control mb-3" type="text" placeholder="Price" aria-label="default input example" name="price" value="{{data.Price}}">
+                                <img src="{{data.Image.url}}" height="100px">
+                            <input class="form-control form-control-sm bg-dark" id="formFileSm" type="file" name="image"><br>
+                            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+                        </div>
+
+</body>
+</html>
+{% endblock %}
